@@ -6,39 +6,6 @@
 <body>
 <header th:replace="fragments/header :: header"></header>
 
-
-<!-- importante  buscador-->
-<!--
-<div class="bootstrap-select">
-    <h2 class="elegantshadow"><a href="/explorar">Explorar</a></h2>
-</div>
-
-<section id="galeria">
-    <div th:each="tipo : ${tipos}" class="foto">
-        <img th:src="@{/img/} + ${tipo} + '.jpg'">
-        <div class="texto">
-            <a th:href="@{/obra/lista-obras?tipo=} + ${tipo}" th:text="${tipo}"> </a>
-        </div>
-    </div>
-</section>
--->
-
-<!--Mostrar obras
-
-    <div class="masonry" style="height: auto;">
-        <div th:each="obra : ${obras}" class="grid">
-            <img th:src="${'/foto/obra/' + obra.id}">
-            <div class="grid__body">
-                <div class="relative">
-                    <h1 class="grid__title" th:text="${obra.nombre}"></h1>
-                    <p class="grid__author" th:text="${obra.usuario.nombre}"></p>
-                </div>
-                <div class="mt-auto">
-                    <span class="grid__tag"><a th:href="@{/obra/ver-obra(id=__${obra.id}__)}">Ver obra</a>   </span>
-                </div>
-            </div>
-        </div>
-    </div>-->
 <main class="container-fluid explorar-main">
     <section class="exposicion container">
         <h1 class="">Exposión de obras</h1>
@@ -46,7 +13,7 @@
         <div class="row buscador">
             <div th:each="tipo : ${tipos}" class="col">
                 <div class="card align-items-center">
-                    <img th:src="@{img/} + ${tipo} + '.jpg'" class="card-img-top">
+                    <img th:src="@{../img/} + ${tipo} + '.jpg'" class="card-img-top">
                     <div class="card-body">
                         <a th:href="@{/obra/lista-obras?tipo=} + ${tipo}" th:text="${tipo}"
                            class="card-title nav-link text-white"></a>
@@ -71,48 +38,7 @@
         </div>
     </section>
 </main>
-<!-----------------
-        <nav class="navegacion">
-            <ul class="menu-principal">
-                <li th:if="${session.usuariosession == null }">
 
-                    <a th:text="${'Bienvenido'}" href="/">Bienvenido</a>
-
-                </li>
-
-                <li th:if="${session.usuariosession != null}">
-
-                    <a th:text="${'Inicio'}" href="/inicio">Inicio</a>
-
-                </li>
-
-                <li th:if="${session.usuariosession == null }">
-
-                    <a th:text="${'Registrarse/Log in'}" href="/registro">Registrarse/Log in</a>
-
-                </li>
-
-                <li th:if="${session.usuariosession != null}">
-
-                    <a th:text="${'Mis Obras'}" th:href="@{/obra/mis-obras}">Mis obras</a></li>
-                </li>
-
-
-                <li>
-
-                    <a href="/contacto">Contacto</a>
-
-                </li>
-
-
-                <li th:if="${session.usuariosession != null}">
-
-                    <a th:text="${'Salir'}" href="/logout">Salir</a>
-
-                </li>
-            </ul>
-        </nav>
-        -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
