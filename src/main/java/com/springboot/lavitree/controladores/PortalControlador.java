@@ -33,7 +33,7 @@ public class PortalControlador {
     private EmailSenderServicio emailSenderServicio;
 
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index(ModelMap model) {
         return "index.html";
     }
