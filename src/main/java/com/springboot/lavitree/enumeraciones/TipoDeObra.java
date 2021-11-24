@@ -10,5 +10,10 @@ package com.springboot.lavitree.enumeraciones;
  * @author Emir
  */
 public enum TipoDeObra {
-    PINTURA, ESCULTURA, FOTOGRAFIA, ILUSTRACION, DIGITAL, INTERVENCION
+    PINTURA, ESCULTURA, FOTOGRAFIA, ILUSTRACION, DIGITAL, INTERVENCION;
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
+    }
 }
