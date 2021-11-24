@@ -33,12 +33,12 @@ public class PortalControlador {
     private EmailSenderServicio emailSenderServicio;
 
 
-    @GetMapping("/index")
+    @GetMapping("index")
     public String index(ModelMap model) {
         return "index.html";
     }
 
-    @GetMapping("/explorar")
+    @GetMapping("explorar")
     public String explorador(ModelMap model) {
         List<Obra> obras = obraServicio.todasLasObras();
         model.put("tipos", TipoDeObra.values());
@@ -47,7 +47,7 @@ public class PortalControlador {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
-    @GetMapping("/inicio")
+    @GetMapping("inicio")
     public String inicio(HttpSession session, ModelMap model) {
         Usuario login = (Usuario) session.getAttribute("usuariosession");
 
@@ -57,7 +57,7 @@ public class PortalControlador {
         return "inicio.html";
     }
 
-    @GetMapping("/login")
+    @GetMapping("login")
     public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap modelo) {
         if (error != null) {
             modelo.put("error1", "usuario o clave incorrectos.");
@@ -69,13 +69,13 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @GetMapping("/registro")
+    @GetMapping("registro")
     public String registro(ModelMap modelo) {
         modelo.put("paises", Paises.values());
         return "registro.html";
     }
 
-    @PostMapping("/registrar")
+    @PostMapping("registrar")
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String mail, @RequestParam String clave, @RequestParam String clave2, Integer telefono, String biografia,
             @RequestParam MultipartFile archivo, @RequestParam Paises pais,
@@ -101,12 +101,12 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @GetMapping("/contacto")
+    @GetMapping("contacto")
     public String contacto(ModelMap model) {
         return "contacto";
     }
 
-    @PostMapping("/envioContacto")
+    @PostMapping("envioContacto")
     public String envioContacto(ModelMap modelo, @RequestParam String nombre, @RequestParam String mail, @RequestParam String asunto, @RequestParam String mensaje) {
         String bodyFinal;
         bodyFinal = nombre + " " + "quiere contactar con nosotros, sus datos son: " + "\n"
@@ -116,7 +116,7 @@ public class PortalControlador {
         return "index";
     }
     
-    @PostMapping("/envioContactoVendedor")
+    @PostMapping("envioContactoVendedor")
     public String envioContactoA(ModelMap modelo, @RequestParam String mailA,@RequestParam String mailI) {
         String bodyFinal;
         bodyFinal = "Un usuario quiere contactar con usted por su obra, su mail es: " + "\n"

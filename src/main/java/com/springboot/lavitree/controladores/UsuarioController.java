@@ -40,7 +40,7 @@ public class UsuarioController {
         Usuario login = (Usuario) session.getAttribute("usuariosession");
 
         if (login == null || !login.getId().equals(id)) {
-            return "redirect:/inicio";
+            return "redirect:/login";
         }
 
         try {
@@ -67,7 +67,7 @@ public class UsuarioController {
 
         try {
             if (login == null || !login.getId().equals(id)) { //!login.getid.equals(id) evita que un usuario hackee a otro cambiando el id en el form
-                return "redirect:/inicio";
+                return "redirect:/index";
             }
             Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
             if (respuesta.isPresent()) {
@@ -75,7 +75,7 @@ public class UsuarioController {
             }
             usuarioServicio.modificar(id, nombre, apellido, mail, clave1, archivo, clave2, telefono, biografia, pais, facebook, instagram, twitter, linkedin);
             session.setAttribute("usuariosession", usuario);
-            return "redirect:/inicio";
+            return "redirect:/login";
         } catch (Exception e) {
             model.put("error", e.getMessage());
             model.put("perfil", usuario);
