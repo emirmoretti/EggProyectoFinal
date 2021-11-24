@@ -1,0 +1,36 @@
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark bg-opacity-75">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img src="/img/logito.svg" alt="lavitree" width="60" height="60"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item my-2 my-sm-0">
+                        <a class="nav-link" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item my-2 my-sm-0">
+                        <a class="nav-link" href="/explorar">Explorar</a>
+                    </li>
+                    <li class="nav-item my-2 my-sm-0">
+                        <a class="nav-link" href="#" th:if="${session.usuariosession != null}">Mi perfil</a>
+                    </li>
+                    <li class="nav-item my-2 my-sm-0">
+                        <a class="nav-link" th:if="${session.usuariosession != null}" th:href="@{/obra/mis-obras}">Mis obras</a>
+                    </li>
+                    <li class="nav-item my-2 my-sm-0">
+                        <a class="nav-link" href="/contacto">Contacto</a>
+                    </li>
+                </ul>
+                <div class="d-flex my-5 my-md-0 justify-content-center">
+                    <a th:if="${session.usuariosession == null}" class="nav-link button-3 mx-3" type="submit" aria-label="sign-up" href="/registro">Registrate</a>
+                    <a th:if="${session.usuariosession == null}" class="nav-link button-3" type="submit" href="/login">Inicia Sesión</a>
+                    <a th:if="${session.usuariosession != null}" class="nav-link button-3" type="submit" href="/logout">Salir</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

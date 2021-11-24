@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport"
+                  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                <title>inicio</title>
+                <link rel="stylesheet" href="css/inicio2.css">
+                    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+                        <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
+                        <script src="js/jquery-3.2.1.js"></script>
+                        <script src="js/main.js"></script>
+                        </head>
+
+                        <body>
+                            <div class="main">
+                                <header>
+                                    <div class="wrap">
+                                        <img src="img/La Vitre Logo - Original with Transparent Background.svg" style="width: 10%;" alt="">
+                                            <div class="btn-menu" id="btn-menu">
+                                                <span class="fas fa-bars"></span>
+                                            </div>
+                                    </div>
+                                </header>
+                                <div class="codepen">
+                                    <div class="fundo"></div>
+                                    <div class="posicao circulo">
+                                        <span>
+                                            <img th:if="${session.usuariosession.foto != null}"  th:src="${'/foto/usuario/' + session.usuariosession.id}" alt="user"/>
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                                <section class="seccion1">
+                                    <div class="wrap">
+                                        <section class="caption-main">
+                                            <h1 th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></h1>
+                                            <h2>USUARIO LOGUEADO</h2>                                            
+                                            <a th:href="@{/explorar}" class="btn-view">Explorar</a>
+                                             <a th:href="@{/obra/mis-obras}" class="btn-view">¡Mis obras!</a>
+                                            <a th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" class="btn-view">¡Configura tu Perfil!</a>
+                                        </section>
+                                    </div>
+                                </section>
+                                <!-- MENU FULL SCREEN -->
+
+                                <div class="full-menu">
+                                    <div class="wrap">
+                                        <nav class="navegacion">
+                                            <ul class="menu-principal">
+                                                <li><a href="/explorar">Explorar</a></li>
+                                                <li th:if="${session.usuariosession != null}" ><a th:text="${'Mis Obras'}" th:href="@{/obra/mis-obras}">Mis obras</a></li>
+                                                <li><a href="/contacto">Contacto</a></li>
+                                                <li><a href="/logout">Salir</a></</li>
+                                        </nav>
+
+                                        <section class="menu-text">
+                                            <div class="posicao circulo" style="top: 50%; left: 70%;width: 220px;
+                                                 height: 220px; border-radius: 50%;">
+                                                <span>
+                                                    <img th:if="${session.usuariosession.foto != null}"  th:src="${'/foto/usuario/' + session.usuariosession.id}" alt="user"/>
+                                                </span>
+
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </body>
+
+
+
+                        <footer class="pie-pagina">
+                            <div class="grupo-1">
+                                <div class="box">
+                                    <figure>
+                                        <a href="/">
+
+                                            <img src="img/La Vitre Logo Footer - Original with Transparent Background (1).svg" alt="Logo de La Vitree" class="Logo-footer">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="box">
+                                    <h2>SOBRE NOSOTROS</h2>
+                                    <p>Buscamos cambiar la forma de observar las cosas</p>
+                                    <p>Somos una galeria virtual que ayuda a autores a dar a conocer su arte.</p>
+                                </div>
+                                <div class="box">
+                                    <h2>SIGUENOS</h2>
+                                    <div class="red-social">
+                                        <a href="https://www.facebook.com/profile.php?id=100075222422136" target="_black" class="fa fa-facebook"></a>
+                                        <a href="https://www.instagram.com/lavitreeegg/" target="_black" class="fa fa-instagram"></a>
+                                        <a href="https://twitter.com/Lavitree_egg" target="_black" class="fa fa-twitter"></a>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grupo-2">
+                                <small>&copy; 2021 <b>Galeria La Vitrée</b> - Todos los Derechos Reservados.</small>
+                            </div>
+                        </footer>
+
+                        </html>

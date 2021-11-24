@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Cargar Obra</title>
+
+                    <link rel="stylesheet" href="/css/subir-fotos.css">
+                        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+                            <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
+                            <script src="/js/jquery-3.2.1.js"></script>
+                            <script src="/js/main.js"></script>
+                            <script src="/js/subir-fotos.js"></script>
+
+                            </head>
+                            <body>
+                                <div class="main">
+                                    <header>
+                                        <div class="wrap">
+                                            <img src="/img/La Vitre Logo - Original with Transparent Background.svg" style="width: 10%;" alt="">
+                                                <div class="btn-menu" id="btn-menu">
+                                                    <span class="fas fa-bars"></span>
+                                                </div>
+                                        </div>
+                                    </header>
+                                </div>
+
+                                <div class="full-menu">
+                                    <div class="wrap">
+                                        <nav class="navegacion">
+                                            <ul class="menu-principal">
+                                                <li  th:if="${session.usuariosession == null }"><a th:text="${'Bienvenido'}" href="/">Bienvenido</a></</li>
+                                                <li><a href="/explorar">Explorar</a></li>
+                                                <li th:if="${session.usuariosession != null}"><a h:text="${'Inicio'}" href="/inicio">Inicio</a></li>
+                                                <li  th:if="${session.usuariosession == null }"><a th:text="${'Registrarse/Log in'}" href="/registro">Registrarse/Log in</a></</li>
+                                                <li th:if="${session.usuariosession != null}" ><a th:text="${'Perfil'}" href="/obra/mis-obras">Perfil</a></li>
+                                                <li th:if="${session.usuariosession != null}" ><a th:text="${'Salir'}" href="/logout">Salir</a></li>
+
+                                            </ul>
+                                        </nav>
+
+                                        <section class="menu-text">
+                                            <img src="/img/pintura.jpg" alt="" height="300px">
+                                        </section>
+                                    </div>
+                                </div>
+
+
+                                <form enctype="multipart/form-data">
+                                    <input type="hidden" name="id">
+                                        <div id="wrapper">
+
+                                            <div class="wrapper">
+                                                <div class="form">
+                                                    <h1>Subir Imágenes</h1>
+
+                                                    <div class="inputfield">
+                                                        <label>Titulo</label>
+                                                        <input type="text" class="input" name="nombre"/>
+                                                    </div>  
+
+                                                    <div class="inputfield">
+                                                        <label>Precio</label>
+                                                        <input type="number" class="input" name="precio"/>
+                                                    </div> 
+
+                                                    <div class="inputfield">
+                                                        <label>Tipo de obra</label>
+                                                        <select class="form-control" name="tipoDeObra"> 
+                                                            <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo}"></option>
+                                                        </select> 
+                                                    </div> 
+                                                    <div class="inputfield">
+                                                        <label>Estilo</label>
+                                                        <select class="form-control" name="estilo"> 
+                                                            <option th:each="estilo : ${estilos}" th:value="${estilo}" th:text="${estilo}"></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="inputfield">
+                                                        <label>Descripcion</label>
+                                                        <textarea  class="textarea" name="descripcion"></textarea>
+                                                    </div> 
+                                                </div>
+
+
+
+                                                <div id="container-input">
+                                                    <!--<div class="wrap-file">
+                                                        <div class="content-icon-camera">
+                                                           <!-- <input type="file"   class="form-control"  name="archivo"  accept="image/png, image/jpeg, image/jpg" multiple />-->
+                                                            <input type="file"  class="form-control" name="archivo" accept="image/png, image/jpeg, image/jpg" multiple/>  
+                                                           <!--<div class="icon-camera"></div>
+                                                        </div>
+                                                        <div id="preview-images">
+
+                                                        </div>
+                                                    </div>-->
+                                                    <button  type="submit"  class="btn btn-primary" id="publish"  formaction="/obra/actualizar-obra" formmethod="POST">Crear obra</button>
+                                              
+                                                </div>
+
+                                                <div class="preload">
+                                                    <img src="/img/preload.gif" alt="preload" />
+                                                </div>
+                                                <h3 id="success"></h3>
+                                            </div>
+                                        </div>
+                                        </div>
+                                <!--<script src="/js/subir-fotos.js"></script>-->
+                                </form>
+                                
+
+
+
+
+                                <footer class="pie-pagina">
+                                    <div class="grupo-1">
+                                        <div class="box">
+                                            <figure>
+                                                <a href="/">
+                                                    <img src="/img/La Vitre Logo Footer - Original with Transparent Background (1).svg" alt="Logo de La Vitree" class="Logo-footer">
+                                                </a>
+                                            </figure>
+                                        </div>
+                                        <div class="box">
+                                            <h2>SOBRE NOSOTROS</h2>
+                                            <p>Buscamos cambiar la forma de observar las cosas</p>
+                                            <p>Somos una galeria virtual que ayuda a autores a dar a conocer su arte.</p>
+                                        </div>
+                                        <div class="box">
+                                            <h2>SIGUENOS</h2>
+                                            <div class="red-social">
+                                                <a href="https://www.facebook.com/" target="_black" class="fa fa-facebook"></a>
+                                                <a href="https://www.instagram.com/" target="_black" class="fa fa-instagram"></a>
+                                                <a href="https://twitter.com/" target="_black" class="fa fa-twitter"></a>
+                                                <a href="https://www.youtube.com/" target="_black" class="fa fa-youtube"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grupo-2">
+                                        <small>&copy; 2021 <b>Galeria La Vitrée</b> - Todos los Derechos Reservados.</small>
+                                    </div>
+                                </footer>
+                            </body>
+                            </html>

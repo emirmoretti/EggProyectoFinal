@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Tinder de Mascota - Login</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a href="/inicio">inicio</a>
+            <a class="nav-link" href="/logout">Salir</a>
+          </li>
+        </ul>
+  </nav>
+
+  <header class="masthead text-center text-white">
+    <h1 class="masthead-heading mb-0"><span></span> Su obra </h1>
+  </header>
+  <section>
+    <div class="container">
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            
+            <form enctype="multipart/form-data">
+                
+              
+              <input type="hidden" name="id" th:value="${obra.id}">
+              <label>Nombre</label>
+              <input type="text" class="form-control" name="nombre" th:value="${obra.nombre}"/>
+              <br>
+              <label>Descripcion</label>
+              <textArea type="text" name="descripcion" th:value="${obra.descripcion}" th:text="${obra.descripcion}"></textArea>
+              <br>
+              <label>Precio</label>
+              <input type="number" class="form-control" name="precio" th:value="${obra.precio}"/>
+              <br>  
+              <label>Tipo de obra</label>
+              <select class="form-control" name="tipoDeObra"> 
+                <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo}" th:selected="${tipo == obra.tipoDeObra}"  ></option>
+              </select> 
+              <br>  
+              <label>Estilo</label>
+              <select class="form-control" name="estilo"> 
+                <option th:each="estilo : ${estilos}" th:value="${estilo}" th:text="${estilo}" th:selected="${estilo == obra.estilo}"></option>
+              </select> 
+              <label>Desea agregar una foto?</label>
+              <input type="file" class="form-control" name="archivo1" accept="image/png, image/jpeg, image/jpg"/>  <!--arreglar para varias fotos-->
+              <br/>
+             
+              <button type="submit" class="btn btn-primary" formaction="/obra/actualizar-obra" formmethod="POST">Actualizar obra</button>
+            </form>
+              <h2>Desea eliminar alguna foto papu?</h2>
+              <div th:if="${!fotos.isEmpty()}">              
+                <div  th:each="fotos : ${fotos}">
+                    <div>
+                        <img th:if="${fotos != null}" class="img-fluid" th:src="${'/foto/obra/galeria/' + fotos.id}" alt="user" style="max-height: 70px">
+                        <br>
+                        <a th:href="@{/obra/eliminar-foto}+'?id='+${fotos.id}">Eliminar fotito</a>
+                    </div>
+                </div>
+              </div>
+              <p th:if="${fotos.isEmpty()}">No tiene imagenes esta obra</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>
