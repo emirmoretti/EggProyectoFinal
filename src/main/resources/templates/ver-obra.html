@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/fragments/head :: head"></head>
+<head th:replace="fragments/head :: head"></head>
 
 <body>
-<header th:replace="/fragments/header :: header"></header>
+<header th:replace="fragments/header :: header"></header>
 <!--
     <div class="imgBody" th:each="foto : ${foto}">
         <img th:if="${foto != null}" class="img-fluid" th:src="${'/foto/obra/galeria/' + foto.id}" alt="user"

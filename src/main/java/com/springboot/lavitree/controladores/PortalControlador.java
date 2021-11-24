@@ -34,8 +34,8 @@ public class PortalControlador {
 
 
     @GetMapping("index")
-    public String index(ModelMap model) {
-        return "index.html";
+    public String index() {
+        return "index";
     }
 
     @GetMapping("explorar")
@@ -49,12 +49,12 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
     @GetMapping("inicio")
     public String inicio(HttpSession session, ModelMap model) {
-        Usuario login = (Usuario) session.getAttribute("usuariosession");
+       // Usuario login = (Usuario) session.getAttribute("usuariosession");
 
         List<Obra> obras = obraServicio.todasLasObras();
         model.put("tipos", TipoDeObra.values());
         model.put("obras", obras);
-        return "inicio.html";
+        return "inicio";
     }
 
     @GetMapping("login")
@@ -66,13 +66,13 @@ public class PortalControlador {
             modelo.put("logout", "Ha salido correctamente de la plataforma");
         }
         modelo.put("paises", Paises.values());
-        return "login.html";
+        return "login";
     }
 
     @GetMapping("registro")
     public String registro(ModelMap modelo) {
         modelo.put("paises", Paises.values());
-        return "registro.html";
+        return "registro";
     }
 
     @PostMapping("registrar")
@@ -98,7 +98,7 @@ public class PortalControlador {
         }
         modelo.put("titulo", "bienvenido al webart");
         modelo.put("descripcion", "Tu usuario fue registrado de manera satisfactoria");
-        return "login.html";
+        return "login";
     }
 
     @GetMapping("contacto")
