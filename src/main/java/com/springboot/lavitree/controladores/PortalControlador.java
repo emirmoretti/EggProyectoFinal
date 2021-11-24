@@ -32,10 +32,9 @@ public class PortalControlador {
     @Autowired
     private EmailSenderServicio emailSenderServicio;
 
+
     @GetMapping("/")
     public String index(ModelMap model) {
-        List<Obra> obras = obraServicio.todasLasObras();
-        model.put("obras", obras);
         return "index.html";
     }
 

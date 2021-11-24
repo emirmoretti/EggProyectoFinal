@@ -24,10 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
 
-/**
- *
- * @author Emir
- */
 @Controller
 @RequestMapping("/foto")
 public class FotoControlador {
