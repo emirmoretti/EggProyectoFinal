@@ -11,7 +11,7 @@ spring:
           starttls:
             enable: true
   datasource:
-    url: jdbc:sqlserver://emirmoretti.database.windows.net:1433;database=lavitreedb_2021-11-23T17-10Z;user=emirmoretti@emirmoretti;password={kimetsu1234567!};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+   url: jdbc:sqlserver://emirmoretti.database.windows.net:1433;database=lavitreedb_2021-11-23T17-10Z;user=emirmoretti@emirmoretti;password={kimetsu1234567!};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
   jpa:
     show-sql: true
     hibernate:
@@ -23,5 +23,5 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
-server:
-  port: 8080
+#server:
+#  port: 8080

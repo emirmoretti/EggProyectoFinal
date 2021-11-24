@@ -98,7 +98,7 @@ public class PortalControlador {
         }
         modelo.put("titulo", "bienvenido al webart");
         modelo.put("descripcion", "Tu usuario fue registrado de manera satisfactoria");
-        return "exitog.html";
+        return "login.html";
     }
 
     @GetMapping("/contacto")
