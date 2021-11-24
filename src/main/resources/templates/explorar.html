@@ -46,7 +46,7 @@
         <div class="row buscador">
             <div th:each="tipo : ${tipos}" class="col">
                 <div class="card align-items-center">
-                    <img th:src="@{/img/} + ${tipo} + '.jpg'" class="card-img-top">
+                    <img th:src="@{img/} + ${tipo} + '.jpg'" class="card-img-top">
                     <div class="card-body">
                         <a th:href="@{/obra/lista-obras?tipo=} + ${tipo}" th:text="${tipo}"
                            class="card-title nav-link text-white"></a>
