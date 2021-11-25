@@ -94,7 +94,7 @@ public class PortalControlador {
             modelo.put("clave2", clave2);
 
             Logger.getLogger(PortalControlador.class.getName()).log(Level.SEVERE, null, ex);
-            return "registro.html";
+            return "registro";
         }
         modelo.put("titulo", "bienvenido al webart");
         modelo.put("descripcion", "Tu usuario fue registrado de manera satisfactoria");

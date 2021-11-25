@@ -5,6 +5,7 @@
  */
 package com.springboot.lavitree.entidades;
 
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,16 +17,20 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-
 import com.springboot.lavitree.enumeraciones.Paises;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-/**
- *
- * @author Emir
- */
+
 @Entity
-public class Usuario {
+@NoArgsConstructor
+@Getter
+@Setter
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -54,215 +59,52 @@ public class Usuario {
     private Date alta;
     @Temporal(TemporalType.TIMESTAMP)
     private Date baja;
+    private Boolean locked = false;
+    private Boolean enabled = false;
 
-    /**
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
+    public Usuario(String nombre, String apellido, String mail, String clave, Paises paises, Foto foto, Boolean locked, Boolean enabled) {
         this.nombre = nombre;
-    }
-
-    /**
-     * @return the apellido
-     */
-    public String getApellido() {
-        return apellido;
-    }
-
-    /**
-     * @param apellido the apellido to set
-     */
-    public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    /**
-     * @return the mail
-     */
-    public String getMail() {
-        return mail;
-    }
-
-    /**
-     * @param mail the mail to set
-     */
-    public void setMail(String mail) {
         this.mail = mail;
+        this.clave = clave;
+        this.paises = paises;
+        this.foto = foto;
+        this.locked = locked;
+        this.enabled = enabled;
     }
 
-    /**
-     * @return the clave
-     */
-    public String getClave() {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
         return clave;
     }
 
-    /**
-     * @param clave the clave to set
-     */
-    public void setClave(String clave) {
-        this.clave = clave;
+    @Override
+    public String getUsername() {
+        return mail;
     }
 
-    /**
-     * @return the telefono
-     */
-    public Integer getTelefono() {
-        return telefono;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    /**
-     * @param telefono the telefono to set
-     */
-    public void setTelefono(Integer telefono) {
-        this.telefono = telefono;
+    @Override
+    public boolean isAccountNonLocked() {
+        return !locked;
     }
 
-    /**
-     * @return the biografia
-     */
-    public String getBiografia() {
-        return biografia;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    /**
-     * @param biografia the biografia to set
-     */
-    public void setBiografia(String biografia) {
-        this.biografia = biografia;
+    @Override
+    public boolean isEnabled() {
+        return enabled;
     }
-
-    /**
-     * @return the paises
-     */
-    public Paises getPaises() {
-        return paises;
-    }
-
-    /**
-     * @param paises the paises to set
-     */
-    public void setPaises(Paises paises) {
-        this.paises = paises;
-    }
-
-    /**
-     * @return the facebook
-     */
-    public String getFacebook() {
-        return facebook;
-    }
-
-    /**
-     * @param facebook the facebook to set
-     */
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    /**
-     * @return the instagram
-     */
-    public String getInstagram() {
-        return instagram;
-    }
-
-    /**
-     * @param instagram the instagram to set
-     */
-    public void setInstagram(String instagram) {
-        this.instagram = instagram;
-    }
-
-    /**
-     * @return the linkedin
-     */
-    public String getLinkedin() {
-        return linkedin;
-    }
-
-    /**
-     * @param linkedin the linkedin to set
-     */
-    public void setLinkedin(String linkedin) {
-        this.linkedin = linkedin;
-    }
-
-    /**
-     * @return the twitter
-     */
-    public String getTwitter() {
-        return twitter;
-    }
-
-    /**
-     * @param twitter the twitter to set
-     */
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
-    }
-
-    /**
-     * @return the foto
-     */
-    public Foto getFoto() {
-        return foto;
-    }
-
-    /**
-     * @param foto the foto to set
-     */
-    public void setFoto(Foto foto) {
-        this.foto = foto;
-    }
-
-    /**
-     * @return the alta
-     */
-    public Date getAlta() {
-        return alta;
-    }
-
-    /**
-     * @param alta the alta to set
-     */
-    public void setAlta(Date alta) {
-        this.alta = alta;
-    }
-
-    /**
-     * @return the baja
-     */
-    public Date getBaja() {
-        return baja;
-    }
-
-    /**
-     * @param baja the baja to set
-     */
-    public void setBaja(Date baja) {
-        this.baja = baja;
-    }
-
 }
