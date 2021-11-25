@@ -31,6 +31,29 @@
         </div>
     </div>
 </section>
+<section class="conteiner-fluid" id="descripcion">
+    <div class="texto" th:if="${obra.descripcion}">
+        <h2>Descripción de la obra</h2>
+        <p th:text="${obra.descripcion}">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe natus, amet labore harum est dolores! Consectetur recusandae, velit deleniti
+            eum voluptas incidunt cumque ab illum placeat nisi, tempora nostrum consequatur.
+        </p>
+        <p th:if="${obra.precio}">
+            su precio es $ <span th:text="${obra.precio}"></span>
+        </p>
+    </div>
+    <div class="login-box">
+        <h3>Medio para contactar con el Artista</h3>
+        <form action="/envioContactoVendedor" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="mailA" th:value="${obra.usuario.mail}">
+            <div class="user-box">
+                <input type="text" name="mailI" id="mail">
+                <label for="mail">Ingrese su email</label>
+            </div>
+            <button type="submit">Contactar al artista</button>
+        </form>
+    </div>
+</section>
 <!-- Modal -->
 <div class="modal fade" id="gallery-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
