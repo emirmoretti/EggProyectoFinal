@@ -11,12 +11,14 @@ spring:
           starttls:
             enable: true
   datasource:
-   url: jdbc:sqlserver://emirmoretti.database.windows.net:1433;database=lavitreedb;user=emir@emirmoretti;password={lavitreedb1234567!};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    url: jdbc:mysql://localhost:3306/base2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-      dialect : org.hibernate.dialect.SQLServer2012Dialect
   thymeleaf:
     cache: false
   servlet:
