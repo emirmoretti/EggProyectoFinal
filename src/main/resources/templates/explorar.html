@@ -13,7 +13,7 @@
         <div class="row buscador">
             <div th:each="tipo : ${tipos}" class="col">
                 <div class="card align-items-center">
-                    <img th:src="@{'/img/' + ${tipo.toString().toLowerCase()} + '.jpg'}" class="card-img-top">
+                    <img th:src="@{'/img/' + ${tipo.toString().toLowerCase()} + '.jpg'}" class="card-img-top" style="border-radius: 10px">
                     <div class="card-body">
                         <a th:href="@{'/obra/lista-obras?tipo=' + ${tipo} }" th:text="${tipo}"
                            class="card-title nav-link text-white"></a>
@@ -26,7 +26,7 @@
         <div id="desplazador">
             <div th:each="obra : ${obras}" class="">
                 <div class="card align-items-center">
-                    <img th:src="${'/foto/obra/' + obra.id}" class="card-img-top" style="width: 350px; height: 350px">
+                    <img th:src="${'/foto/obra/' + obra.id}" class="card-img-top" style="width: 350px; height: 350px;">
                     <div class="card-body">
                         <h5 class="card-title">Nombre de la obra: <span th:text="${obra.nombre}"></span></h5>
                         <h6 class="card-text">Dueño: <span th:text="${obra.usuario.nombre}"></span></h6>
