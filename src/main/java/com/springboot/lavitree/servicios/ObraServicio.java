@@ -11,9 +11,9 @@ import com.springboot.lavitree.repositorio.UsuarioRepositorio;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -105,7 +105,7 @@ public class ObraServicio {
         }
 
     }
-
+    @Transactional(readOnly=true)
     public Obra buscarPorId(String id) throws ErrorServicio {
         Optional<Obra> respuesta = obraRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -115,14 +115,16 @@ public class ObraServicio {
         }
     }
 
+    @Transactional(readOnly=true)
     public List<Obra> buscarObrasPorUsuario(String id) {
         return obraRepositorio.buscarObrasPorUsuario(id);
     }
 
+    @Transactional(readOnly=true)
     public List<Obra> todasLasObras() {
         return obraRepositorio.findAll();
     }
-
+    @Transactional(readOnly=true)
     public List<Obra> buscarObrasPorTipo(TipoDeObra tipo) {
         return obraRepositorio.findAllByTipo(tipo);
     }

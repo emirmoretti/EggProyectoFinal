@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ import java.util.List;
  * @author Emir
  */
 @Repository
+@Transactional
 public interface ObraRepositorio extends JpaRepository<Obra, String> {
 
     @Query("SELECT c FROM Obra c WHERE c.usuario.id = :id AND c.baja is NULL")
