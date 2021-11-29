@@ -11,20 +11,20 @@ spring:
           auth: true
           starttls:
             enable: true
-  datasource:
-    url: jdbc:mysql://localhost:3306/base2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    show-sql: false
-    hibernate:
-      ddl-auto: update
-  thymeleaf:
-    cache: false
-  servlet:
-    multipart:
-      max-file-size: 20MB
-      max-request-size: 20MB
-server:
-  port: 8080
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/base2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  jpa:
+#    show-sql: false
+#    hibernate:
+#      ddl-auto: update
+#  thymeleaf:
+#    cache: false
+#  servlet:
+#    multipart:
+#      max-file-size: 20MB
+#      max-request-size: 20MB
+#server:
+#  port: 8080
