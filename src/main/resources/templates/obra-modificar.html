@@ -6,7 +6,7 @@
 <body>
 
 <header th:replace="fragments/header :: header"></header>
-
+<!--
 <section>
     <div class="container">
         <div class="col-lg-6 order-lg-1">
@@ -36,7 +36,7 @@
                     </select>
                     <label>Desea agregar una foto?</label>
                     <input type="file" class="form-control" name="archivo1" accept="image/png, image/jpeg, image/jpg"/>
-                    <!--arreglar para varias fotos-->
+                    arreglar para varias fotos
                     <br/>
 
                     <button type="submit" class="btn btn-primary" formaction="/obra/actualizar-obra" formmethod="POST">
@@ -59,7 +59,80 @@
         </div>
     </div>
     </div>
-</section>
-</body>
+</section> -->
+<main class="container-fluid obra-modificar">
+    <div class="form-container">
+        <div class="login-box mt-5">
+            <h2>Actualizar obra</h2>
+            <form class="row g-3" enctype="multipart/form-data">
+                <input type="hidden" name="id" th:value="${obra.id}">
+                <div class="user-box col-md-6">
+                    <input type="text" name="nombre" th:value="${obra.nombre}"/>
+                </div>
+                <div class="user-box col-md-6">
+                    <input type="number" name="precio" th:value="${obra.precio}"/>
+                    <label>Precio</label>
+                </div>
+                <div class="user-box col-md-12 p-2">
+                    <select class="select-box" name="tipoDeObra">
+                        <option disabled selected>Selecciona un Tipo de Obra</option>
+                        <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo}"
+                                th:selected="${tipo == obra.tipoDeObra}"></option>
+                    </select>
+                </div>
+                <div class="user-box col-md-12 py-3">
+                    <select class="select-box" name="estilo">
+                        <option disabled selected>Selecciona un Estilo de Obra</option>
+                        <option th:each="estilo : ${estilos}" th:value="${estilo}" th:text="${estilo}"
+                                th:selected="${estilo == obra.estilo}"></option>
+                    </select>
+                </div>
+                <div class="user-box col-md-12">
+                    <textArea type="text" name="descripcion" th:value="${obra.descripcion}"
+                              style="resize:none; width: 100%;" th:text="${obra.descripcion}"
+                              placeholder="Ingrese su descripcion aqui..."></textArea>
+                </div>
+                <div class="user-box col-md-6">
+                    <input id="foto" type="file" class="form-control" name="archivo1"
+                           accept="image/png, image/jpeg, image/jpg"/>
+                    <label for="foto">Desea agregar una foto?</label>
+                </div>
+                <button type="submit" class="text-center" formaction="/obra/actualizar-obra" formmethod="POST">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Actualizar obra
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="fotos-container">
+        <table class="table table-hover table-dark"  th:if="${!fotos.isEmpty()}">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" class="d-none d-md-block d-lg-block">Imagen</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Accion</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="fotos,iterator : ${fotos}">
+                <th scope="row" th:text="${iterator.index+1}"></th>
+                <td class="d-none d-md-block d-lg-block">
+                    <img th:if="${fotos != null}" class="img-fluid" th:src="${'/foto/obra/galeria/' + fotos.id}"
+                         alt="user" style="max-height: 70px">
+                </td>
+                <td th:text="${fotos.nombre}">La mona lisa</td>
+                <td>
+                    <a th:href="@{/obra/eliminar-foto}+'?id='+${fotos.id}">Eliminar fotito</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
 
+</body>
 </html>

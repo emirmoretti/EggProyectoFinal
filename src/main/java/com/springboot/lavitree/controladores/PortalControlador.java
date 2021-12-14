@@ -46,17 +46,6 @@ public class PortalControlador {
         return "explorar";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
-    @GetMapping("inicio")
-    public String inicio(HttpSession session, ModelMap model) {
-       // Usuario login = (Usuario) session.getAttribute("usuariosession");
-
-        List<Obra> obras = obraServicio.todasLasObras();
-        model.put("tipos", TipoDeObra.values());
-        model.put("obras", obras);
-        return "inicio";
-    }
-
     @GetMapping("login")
     public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap modelo) {
         if (error != null) {

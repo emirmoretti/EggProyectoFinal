@@ -121,7 +121,7 @@ public class ObraControlador {
 
         Usuario login = (Usuario) session.getAttribute("usuariosession");
         if (login == null) {
-            return "redirect:/inicio";
+            return "redirect:/index";
         }
 
         try {
@@ -149,7 +149,7 @@ public class ObraControlador {
         //foto.usuario.id == login.usuario.id
         //Foto foto = fotoServicio.buscarPorId(id)
         fotoServicio.deleteById(id);
-        return "redirect:/inicio";
+        return "redirect:/obra/mis-obras";
     }
 
     @GetMapping("/lista-obras")
