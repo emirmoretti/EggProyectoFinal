@@ -11,9 +11,9 @@ spring:
           starttls:
             enable: true
   datasource:
-    url: jdbc:mysql://localhost:3306/base2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
+    url: jdbc:mysql://doadmin:3JhkyhEvgBrpE4Dr@db-mysql-nyc3-26559-do-user-8784587-0.b.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED
+    username: doadmin
+    password: 3JhkyhEvgBrpE4Dr
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: false
@@ -26,4 +26,4 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
 server:
-  port: 8080
+  port: 25060

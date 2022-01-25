@@ -54,7 +54,7 @@ public class UsuarioController {
             model.addAttribute("error", e.getMessage());
             model.put("paises", Paises.values());
         }
-        return "editar-perfil.html";
+        return "editar-perfil";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")

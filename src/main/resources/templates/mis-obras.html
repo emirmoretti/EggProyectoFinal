@@ -66,8 +66,8 @@
             <tr th:each="obra,iterator : ${obras}">
                 <th scope="row" th:text="${iterator.index+1}"></th>
                 <td class="d-none d-md-block d-lg-block">
-                    <img th:if="${obra.foto != null}" th:src="${'/foto/obra/' + obra.id}" width="100" height="100">
-                    <img th:if="${obra.foto == null}" src="https://via.placeholder.com/100" width="100" height="100">
+                    <img th:if="${obra.foto.size > 0}" th:src="${'/foto/obra/' + obra.id}" width="100" height="100">
+                    <img th:if="${obra.foto.size == 0}" src="https://via.placeholder.com/100" width="100" height="100">
                 </td>
                 <td th:text="${obra.nombre}">La mona lisa</td>
                 <td>

@@ -16,7 +16,7 @@
                         <a class="nav-link" href="/explorar">Explorar</a>
                     </li>
                     <li class="nav-item my-2 my-sm-0" th:if="${session.usuariosession != null}">
-                        <a class="nav-link" href="#" th:if="${session.usuariosession != null}">Mi perfil</a>
+                        <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" th:if="${session.usuariosession != null}">Mi perfil</a>
                     </li>
                     <li class="nav-item my-2 my-sm-0" th:if="${session.usuariosession != null}">
                         <a class="nav-link" th:if="${session.usuariosession != null}" th:href="@{/obra/mis-obras}">Mis obras</a>

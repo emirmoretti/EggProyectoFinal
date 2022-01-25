@@ -22,16 +22,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- *
- * @author Emir
- */
 @Controller
 @RequestMapping("/obra")
 public class ObraControlador {
@@ -75,7 +70,7 @@ public class ObraControlador {
     @GetMapping("/delete")
     public String eliminarObra(@RequestParam String id) {
         obraServicio.deleteById(id);
-        return "redirect:/inicio";
+        return "redirect:/obra/mis-obras";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
