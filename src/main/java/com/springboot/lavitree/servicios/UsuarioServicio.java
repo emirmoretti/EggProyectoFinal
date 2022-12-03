@@ -62,7 +62,7 @@ public class UsuarioServicio implements UserDetailsService {
         Foto foto = fotoServicio.guardar(archivo);
 
         usuario.setFoto(foto);
-        emailSenderServicio.envioMail(mail, "Bienvenido a La vitreé", "Ya podes disfrutar todas nuestras obras");
+//        emailSenderServicio.envioMail(mail, "Bienvenido a La vitreé", "Ya podes disfrutar todas nuestras obras");
         usuarioRepositorio.save(usuario);
 
     }
@@ -96,7 +96,7 @@ public class UsuarioServicio implements UserDetailsService {
                 usuario.setFoto(foto);
             }            
             usuarioRepositorio.save(usuario);
-            emailSenderServicio.envioMail(mail, "Se actualizaron tus datos en La vitreé", "Logueate para chequear que tus datos se modificaron correctamente.");
+//            emailSenderServicio.envioMail(mail, "Se actualizaron tus datos en La vitreé", "Logueate para chequear que tus datos se modificaron correctamente.");
 
         } else {
             throw new ErrorServicio("No se encontro el usuario solicitado");
@@ -111,7 +111,7 @@ public class UsuarioServicio implements UserDetailsService {
             Usuario usuario = respuesta.get();
             usuario.setBaja(new Date());
             usuarioRepositorio.save(usuario);
-            emailSenderServicio.envioMail(usuario.getMail(), "Oh no! te vas de  La vitreé", "Nos apena mucho que te vayas de nuestra galeria de arte virtual, siempre te esperamos con los brazos abiertos!");
+//            emailSenderServicio.envioMail(usuario.getMail(), "Oh no! te vas de  La vitreé", "Nos apena mucho que te vayas de nuestra galeria de arte virtual, siempre te esperamos con los brazos abiertos!");
         } else {
             throw new ErrorServicio("No se encontro el usuario solicitado");
         }

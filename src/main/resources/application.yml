@@ -11,9 +11,9 @@ spring:
           starttls:
             enable: true
   datasource:
-    url: jdbc:mysql://doadmin:3JhkyhEvgBrpE4Dr@db-mysql-nyc3-26559-do-user-8784587-0.b.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED
-    username: doadmin
-    password: 3JhkyhEvgBrpE4Dr
+    url: jdbc:mysql://localhost/lavitree?useSSL=false
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: false
